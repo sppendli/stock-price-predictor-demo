@@ -1,0 +1,47 @@
+artifact_path: model
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.9
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.6.1
+is_signature_from_type_hint: false
+mlflow_version: 2.22.0
+model_size_bytes: 9233699
+model_uuid: abb96fd88fbc457a983fe092bc5c353e
+prompts: null
+run_id: 2a738504c35b4e35bfea254cc0854570
+saved_input_example_info:
+  artifact_path: input_example.json
+  pandas_orient: split
+  serving_input_path: serving_input_example.json
+  type: dataframe
+signature:
+  inputs: '[{"type": "double", "name": "Close", "required": true}, {"type": "long",
+    "name": "Volume", "required": true}, {"type": "double", "name": "Close_MA_7",
+    "required": true}, {"type": "double", "name": "Close_MA_14", "required": true},
+    {"type": "double", "name": "Close_MA_21", "required": true}, {"type": "double",
+    "name": "RSI", "required": true}, {"type": "double", "name": "%K", "required":
+    true}, {"type": "double", "name": "%D", "required": true}, {"type": "double",
+    "name": "SMA_20", "required": true}, {"type": "double", "name": "STD_20", "required":
+    true}, {"type": "double", "name": "UPPER_BAND", "required": true}, {"type": "double",
+    "name": "LOWER_BAND", "required": true}, {"type": "double", "name": "ATR", "required":
+    true}, {"type": "double", "name": "EMA_12", "required": true}, {"type": "double",
+    "name": "EMA_26", "required": true}, {"type": "double", "name": "MACD", "required":
+    true}, {"type": "double", "name": "SIGNAL", "required": true}, {"type": "double",
+    "name": "HISTOGRAM", "required": true}, {"type": "double", "name": "OBV", "required":
+    true}, {"type": "double", "name": "VWAP", "required": true}, {"type": "double",
+    "name": "ROC", "required": true}, {"type": "double", "name": "CCI", "required":
+    true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "float64", "shape": [-1]}}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2025-08-27 02:13:18.264453'
