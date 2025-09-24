@@ -50,8 +50,7 @@ try:
     mlflow.set_tracking_uri(mlflow_config["tracking"]["uri"])
     logger.info(f"MLflow tracking URI set to {mlflow_config['tracking']['uri']}")
 except Exception as e:
-    logger.error(f"Failed to load MLflow config: {str(e)}")
-    st.error("Failed to configure MLflow. Please check your configuration.")
+    logger.warning(f"MLflow config not found, using default settings: {str(e)}")
 
 st.set_page_config(
     page_title="Stock Price Predictor",
