@@ -40,6 +40,68 @@ EXPERIMENT_CONFIG = {
     }
 }
 
+FEATURE_CONFIG = {
+    "version": 1.0,
+    "feature_definitions": {
+        "moving_averages":{
+            "windows": [7, 14, 21],
+            "columns": ["Close"]
+        },
+        "relative_strength_index": {
+            "window": 14,
+            "column": "Close"
+        },
+        "stochastic_oscillator": {
+            "k_window": 14,
+            "d_window": 3,
+            "high_column": "High",
+            "low_column": "Low",
+            "close_column": "Close"
+        },
+        "bollinger_bands": {
+            "window": 20,
+            "column": "Close"
+        },
+        "average_true_range": {
+            "window": 14,
+            "high_column": "High",
+            "low_column": "Low",
+            "close_column": "Close"
+        },
+        "moving_average_convergence_divergence": {
+            "fast_period": 12,
+            "slow_period": 26,
+            "signal_period": 9,
+            "column": "Close"
+        },
+        "on_balance_volume": {
+            "close_column": "Close",
+            "volume_column": "Volume"
+        },
+        "volume_weighted_average_price": {
+            "high_column": "High",
+            "low_column": "Low",
+            "close_column": "Close",
+            "volume_column": "Volume"
+        },
+        "rate_of_change": {
+            "window": 14,
+            "column": "Close"
+        },
+        "commodity_channel_index": {
+            "window": 20,
+            "high_column": "High",
+            "low_column": "Low",
+            "close_column": "Close"
+        }
+    },
+    "temporal_features": {},
+    "feature_selection": {
+        "exclude":["Open", "High", "Low"],
+        "target": "close_7d_future"
+    }
+}
+
 MLFLOW_CONFIG = {
     "tracking": {
         "uri": "http://127.0.0.1:5000",

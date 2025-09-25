@@ -25,7 +25,7 @@ warnings.simplefilter("ignore")
 from stock_price_predictor.data_processing.feature_engineering import FeaturePipeline
 from stock_price_predictor.features.registry import registry
 from stock_price_predictor.simulations.simulations import TradingSimulator, ThresholdStrategy, MomentumStrategy, PositionType
-from config import EXPERIMENT_CONFIG, MLFLOW_CONFIG
+from config import EXPERIMENT_CONFIG, FEATURE_CONFIG, MLFLOW_CONFIG
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -129,7 +129,7 @@ def load_data(file_path: str, tickers: list) -> pd.DataFrame:
 def process_data(
         data: pd.DataFrame, 
         forecast_horizon: int = 5, 
-        config_path: str = "feature_config"
+        config_path: dict = FEATURE_CONFIG
     ) -> pd.DataFrame:
     """
     Process data using the feature engineering pipeline.
@@ -141,7 +141,7 @@ def process_data(
     forecast_horizon : int, optional
         Number of days to predict ahead (default is 5).
     config_path : str, optional
-        Path to feature configuration file (default is "feature_config").
+        Dict of feature configuration.
 
     Returns
     -------
@@ -154,7 +154,7 @@ def process_data(
         If feature pipeline processing fails.
     """
     try:
-        feature_pipeline = FeaturePipeline(config_path="feature_config")
+        feature_pipeline = FeaturePipeline(config_path)
         experiment_config = EXPERIMENT_CONFIG
         processed_data = feature_pipeline.transform(df=data, features_to_apply=None, forecast_horizon=forecast_horizon)
         target_col = experiment_config['target']
