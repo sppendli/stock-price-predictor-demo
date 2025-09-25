@@ -24,8 +24,8 @@ warnings.simplefilter("ignore")
 
 from stock_price_predictor.data_processing.feature_engineering import FeaturePipeline
 from stock_price_predictor.features.registry import registry
-from stock_price_predictor.utils.config_loader import load_config
 from stock_price_predictor.simulations.simulations import TradingSimulator, ThresholdStrategy, MomentumStrategy, PositionType
+from config import EXPERIMENT_CONFIG, MLFLOW_CONFIG
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -46,7 +46,7 @@ def initialize_session_state():
         st.session_state.forecast_horizon = 5
 
 try:
-    mlflow_config = load_config("mlflow_config", temp_file=False)
+    mlflow_config = MLFLOW_CONFIG
     mlflow.set_tracking_uri(mlflow_config["tracking"]["uri"])
     logger.info(f"MLflow tracking URI set to {mlflow_config['tracking']['uri']}")
 except Exception as e:
@@ -155,7 +155,7 @@ def process_data(
     """
     try:
         feature_pipeline = FeaturePipeline(config_path="feature_config")
-        experiment_config = load_config("experiment_config", temp_file=False)
+        experiment_config = EXPERIMENT_CONFIG
         processed_data = feature_pipeline.transform(df=data, features_to_apply=None, forecast_horizon=forecast_horizon)
         target_col = experiment_config['target']
         X = processed_data.drop(columns=target_col)
@@ -1078,7 +1078,7 @@ def main():
                 filtered_data = filter_by_date(data, str(start_date), str(end_date))
 
                 if not filtered_data.empty:
-                    experiment_config = load_config("experiment_config")
+                    experiment_config = EXPERIMENT_CONFIG
                     target_col = experiment_config.get('target')
                     
                     filtered_data[target_col] = filtered_data["Close"].shift(-forecast_horizon)
