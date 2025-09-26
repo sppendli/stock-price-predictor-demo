@@ -94,6 +94,30 @@ This demo leverages a custom ML framework with:
 - **Feature Engineering** with advanced technical indicators
 - **Simulations & Backtesting** for realistic strategy evaluation under market conditions  
 
+## ⚠️ Demo Limitations
+
+This demo is intended to showcase the core capabilities of the forecasting framework  and is **not a full-fledged trading platform**. To ensure clarity and focus, the current limitations include:
+1. **Single Asset Focus**
+   - The model currently supports **AMZN stock only**.
+   - Other assets, indices, or ETFs are not included in this version.
+2. **Short Forecast Horizon**
+   - Forecasts are limited to a **15-day window**.
+   - Predictions beyond 15 days are not supported and may produce inaccurate results.
+3. **Historical Data Only**
+   - The demo relies on **historical market data** for feature generation and model predictions.
+   - Real-time trading integration is not implemented in this version.
+4. **Simplified Simulation**
+   - Backtesting and simulation features are **limited to illustrative purposes**.
+   - Results should not be used for real-world investment decisions.
+5. **No Risk Management**
+   - This demo does **not include portfolio optimization, risk assessment, or capital allocation**.
+   - Any suggested actions are purely for educational and demonstration purposes.
+6. **Experimental Model**
+   - This model represents an **early prototype**.
+   - Accuracy is optimized for short-term AMZN predictions and may vary in other contexts.
+
+> ⚡ **Note:** These constraints are intentional to highlight model performance in a **focused, controlled setting**. Future versions will expand assets, horizons, and functionality while maintaining reliability.
+
 ---
   
 *For educational and research purposes only. Not financial advice.*
