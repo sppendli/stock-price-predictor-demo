@@ -995,7 +995,8 @@ def main():
 
     available_tickers = st.sidebar.multiselect(
         "Select Tickers",
-        options=['AAPL', 'GOOGL', 'AMZN', 'TSLA', 'MSFT', 'NVDA'],
+        # options=['AAPL', 'GOOGL', 'AMZN', 'TSLA', 'MSFT', 'NVDA'],
+        options=['AMZN'],
         default=['AMZN'],
         help="Select which stock tickers to analyze"
     )
@@ -1066,7 +1067,7 @@ def main():
         forecast_horizon = st.sidebar.slider(
             "Forecast Horizon",
             min_value=1,
-            max_value=30,
+            max_value=15,
             value=5,
             help="Number of days to predict ahead"
         )
